@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
   );
   product.associate = function (models) {
     product.belongsTo(models.category);
+    product.belongsToMany(models.order, {
+      through: "orderedproducts",
+      foreignKey: "productId",
+    });
   };
   return product;
 };
