@@ -1,5 +1,7 @@
 const express = require("express");
 const productRouter = require("./routers/product");
+const orderRouter = require("./routers/order");
+const categoryRouter = require('./routers/category')
 const auth = require("./routers/auth");
 const PORT = process.env.PORT || 4000;
 const app = express();
@@ -10,5 +12,7 @@ app.use(jsonParser);
 
 app.use("/auth", auth);
 app.use("/products", authMiddleware, productRouter);
+app.use("/orders", orderRouter);
+app.use('/categories', categoryRouter);
 
 app.listen(PORT, () => console.log("server started"));
