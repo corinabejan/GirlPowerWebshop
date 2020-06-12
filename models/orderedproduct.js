@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   orderedproduct.associate = function(models) {
-    orderedproducts.belongsTo(models.product);
-    orderedproducts.belongsTo(models.order);
+    orderedproduct.belongsTo(models.product);
+    orderedproduct.belongsTo(models.order);
   };
   return orderedproduct;
 };
