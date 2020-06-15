@@ -15,4 +15,20 @@ router.get("/", async (request, response) => {
     .catch((error) => next(error));
 });
 
+router.get("/:id", async (request, response) => {
+  const { id } = request.params;
+  const customer = await Customer.findByPk(id);
+  response.send(customer);
+});
+
+router.get("/email/:email", async (request, response, next) => {
+  const { email } = request.params;
+  try {
+    const customer = await Customer.findOne({ where: { email } });
+    response.json(customer);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;

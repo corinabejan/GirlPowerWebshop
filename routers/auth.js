@@ -32,7 +32,6 @@ router.post("/login", async (req, res, next) => {
     const { email, password } = req.body;
 
     const user = await Customer.findOne({ where: { email } });
-
     if (!user) {
       res.status(404).send("User not found");
     } else {
